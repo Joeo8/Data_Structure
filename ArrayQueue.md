@@ -5,8 +5,12 @@
 #### 队列介绍：
 
 >+ 队列是一个有序列表，可用<font style="color:pink">数组</font>或<font style="color:pink">链表</font>进行实现.
+>
 >+ 遵循<font style="color:pink">先入先出</font>原则。即，先存入队列的数据先取出，后存入的数据要后取出。
+>
 >+ 示意图（使用数组模拟队列）：
+>
+>  ![](./Media/ArrayQueue.png)
 
 <hr>
 
