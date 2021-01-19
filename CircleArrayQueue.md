@@ -24,78 +24,78 @@
 #### 细节：
 
 >+ ```java
->      //创建队列的构造器
->      public CircleArrayQueue(int maxSize) {
->          this.maxSize = maxSize;
->          arr = new int[this.maxSize];           //创建对应长度的队列
->          //front & rear 默认给定的值为 0 ，所以可以省略赋值操作
->      }
->  ```
->
+>     //创建队列的构造器
+>     public CircleArrayQueue(int maxSize) {
+>         this.maxSize = maxSize;
+>         arr = new int[this.maxSize];           //创建对应长度的队列
+>         //front & rear 默认给定的值为 0 ，所以可以省略赋值操作
+>     }
+>     ```
+
 >+ ```java
->      //判断队列是否为满
->      public boolean isFull() {
->          return (rear + 1) % maxSize == front;
->      }
->  ```
->
+>    //判断队列是否为满
+>    public boolean isFull() {
+>        return (rear + 1) % maxSize == front;
+>    }
+>    ```
+
 >+ ```java
->   //添加数据到队列
->      public void addQueue(int num) {
->          //判断队列是否为满
->          if (isFull()) {
->              System.out.println("队列已满不能添加有效数据！");
->              return;
->          }
->          //rear初始值为0，直接指向的就是下一个位置。所以可以直接将数据加入
->          arr[rear] = num;
->          //因为要做成环形队列，所以 rear 取模向后 ++
->          rear = (rear + 1) % maxSize;
->      }
->  ```
->
+> //添加数据到队列
+>    public void addQueue(int num) {
+>        //判断队列是否为满
+>        if (isFull()) {
+>            System.out.println("队列已满不能添加有效数据！");
+>            return;
+>        }
+>        //rear初始值为0，直接指向的就是下一个位置。所以可以直接将数据加入
+>        arr[rear] = num;
+>        //因为要做成环形队列，所以 rear 取模向后 ++
+>        rear = (rear + 1) % maxSize;
+>    }
+>   ```
+
 >+ ```java
->      //获取队列中的数据，出队列
->      public int getQueue() {
->          //判断队列是否为空
->          if (isEmpty()) {
->              //抛出异常
->         throw new RuntimeException("队列为空，无法获取有效数据 ！");
->          }
->          //这里不能直接将front返回，需要经过三步
->          /*
->           *   1. 先将front 对应的数据取出给临时变量 value
->           *   2. 将 front 后移 （取模后++）
->           *   3. 将临时变量存放的数据返回
->           */
->          int value = arr[front];
->          front = (front + 1) % maxSize;
->          return value;
->      }
->  ```
->
+>    //获取队列中的数据，出队列
+>    public int getQueue() {
+>        //判断队列是否为空
+>        if (isEmpty()) {
+>            //抛出异常
+>       throw new RuntimeException("队列为空，无法获取有效数据 ！");
+>        }
+>        //这里不能直接将front返回，需要经过三步
+>        /*
+>         *   1. 先将front 对应的数据取出给临时变量 value
+>         *   2. 将 front 后移 （取模后++）
+>         *   3. 将临时变量存放的数据返回
+>         */
+>        int value = arr[front];
+>        front = (front + 1) % maxSize;
+>        return value;
+>    }
+>    ```
+
 >+ ```java
->      //显示队列中的有效数据
->      public void showQueue() {
->          //判断队列是否为空
->          if (isEmpty()) {
->          throw new RuntimeException("队列为空，无法获取到有效数据！ ");
->          }
->          //因为添加了环形操作，所以这里不能再fori循环遍历取值了
->          //思路: 从 front开始向后遍历多少个数据进行输出打印
->          for (int i = front; i < front + size(); i++) {
->              System.out.printf("arr[%d]=%d\n", i % maxSize, arr[i % maxSize]);
->          }
->      }
->  
->  ```
+>     //显示队列中的有效数据
+>     public void showQueue() {
+>         //判断队列是否为空
+>         if (isEmpty()) {
+>         throw new RuntimeException("队列为空，无法获取到有效数据！ ");
+>         }
+>         //因为添加了环形操作，所以这里不能再fori循环遍历取值了
+>         //思路: 从 front开始向后遍历多少个数据进行输出打印
+>         for (int i = front; i < front + size(); i++) {
+>             System.out.printf("arr[%d]=%d\n", i % maxSize, arr[i % maxSize]);
+>         }
+>     }
+>     ```
 >
+
 >+ ```java
->      //获取队列中的有效数据个数  ==》 用于取代静态的arr.length
->      public int size() {
->          return (rear + maxSize - front) % maxSize;
->      }
->  ```
+>    //获取队列中的有效数据个数  ==》 用于取代静态的arr.length
+>    public int size() {
+>        return (rear + maxSize - front) % maxSize;
+>    }
+>    ```
 
 
 
