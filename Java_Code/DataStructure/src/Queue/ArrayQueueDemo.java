@@ -1,7 +1,5 @@
 package Queue;
-
 import java.util.Scanner;
-
 /**
  * Created with IntelliJ IDEA.
  * User: Joeo8
