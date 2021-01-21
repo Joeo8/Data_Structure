@@ -1,7 +1,7 @@
 ## SparseArray稀疏数组
 
 #### 问题引入：
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;五子棋（棋局游戏）棋盘的存储。在实际问题中，一个棋盘中棋子未满，或者棋子的种类固定，那么存储过程中可以压缩棋盘，提高读写效率
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;五子棋（棋局游戏）棋盘的存储。在实际问题中，一个棋盘中棋子未满，或者棋子的种类固定，那么存储过程中可以压缩棋盘，提高读写效率。
 >
 
 #### 二维数组转稀疏数组的思路：
@@ -19,7 +19,7 @@
 
 
 #### 拓展：
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在整个压缩过程中，可以加入Io流，将系数数据写入到文件中。读数据的时候，从文件中拿出稀疏数组转换成原始二维数组
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在整个压缩过程中，可以加入Io流，将稀疏数组写入到文件中。读数据的时候，从文件中拿出稀疏数组转换成原始二维数组输出显示。
 
 ```java
 
@@ -27,7 +27,7 @@
  * Created with IntelliJ IDEA.
  * User: Joeo8
  * Time: 16:03
- * Description: No Description
+ * Description: SparseArray
  */
 //  ====================SparseArray实现===========================
 public class SparseArray {
@@ -65,14 +65,14 @@ public class SparseArray {
         sparseArray[0][1] = chessArray[0].length;
         sparseArray[0][2] = sum;
         //遍历原始二维数组，将非0元素存放到稀疏数组中
-        int count = 0;       //count 用于记录时对应的第几个非零数据
+        int count = 0;       //count 用于记录遍历时对应的第几个非零数据
         for (int i = 0; i < chessArray.length; i++) {
             for (int j = 0; j < chessArray[i].length; j++) {
                 if (chessArray[i][j] != 0) {
-                    count++;     //需要一个自增的字数器来向稀疏数组中添加非零数据
+                    count++;     //需要一个自增的计数器器来向稀疏数组中添加非零数据
                     sparseArray[count][0] = i;                              //行
                     sparseArray[count][1] = j;                              //列
-                    sparseArray[count][2] = chessArray[i][j];     //值
+                    sparseArray[count][2] = chessArray[i][j];               //值
                 }
             }
         }
@@ -85,7 +85,7 @@ public class SparseArray {
         }
         System.out.println("===================================================\n" +
                 "将稀疏数组恢复为原始数组如下");
-        //=========稀疏数组转换为原始二维数组========== ===
+        //=========稀疏数组转换为原始二维数组=============
         /*
             1.先读取稀疏数组的第一行，根据稀疏数组的第一行数据创建对应的二维数组
             2.再读取稀疏数组的后几行数据，并赋值给原始的二维数组
