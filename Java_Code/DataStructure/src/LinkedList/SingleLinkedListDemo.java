@@ -1,5 +1,4 @@
 package LinkedList;
-
 /**
  * Created with IntelliJ IDEA.
  * User: Joeo8
@@ -26,6 +25,8 @@ public class SingleLinkedListDemo {
         singleLinkedList.addByOrder(hero_3);
         singleLinkedList.addByOrder(hero_3);
         singleLinkedList.addByOrder(hero_2);
+        HeroNode updateHero = new HeroNode(2,"俊逸","麒麟");
+        singleLinkedList.update(updateHero);
         //第四步：显示SingleLinkedList中的各个node
         singleLinkedList.show();
     }
@@ -82,6 +83,36 @@ class SingleLinkedList {
         }
     }
 
+    //修改节点信息（根据no编号进行修改，即no不可更改）
+    public void update(HeroNode heroNode){
+        //判断链表是否为空
+        if (head.next == null){
+            System.out.println("链表为空！");
+            return ;
+        }
+        //根据no编号索引需要修改的节点数据
+        HeroNode temp = head.next ;
+        boolean flag = false ;
+        while(true){
+            if (temp == null){
+                break ; //表示已经遍历完链表
+            }
+            if(temp.no == heroNode.no){
+                flag = true ;
+                break ;
+            }
+            temp = temp.next ;
+        }
+        //根据flag判断是否找到要修改的节点
+        if (flag){
+            temp.name = heroNode.name;
+            temp.nickname = heroNode.nickname;
+        }else{
+            //没有找到要修改的节点
+            System.out.println("没要找到节点信息，无法进行修改！");
+        }
+
+    }
 
     //显示链表中的各个节点【遍历】
     public void show() {
