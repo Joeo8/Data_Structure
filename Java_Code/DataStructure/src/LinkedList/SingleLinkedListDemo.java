@@ -17,11 +17,15 @@ public class SingleLinkedListDemo {
         //第二步：创建一个SingleLinkedList
         SingleLinkedList singleLinkedList = new SingleLinkedList();
         //第三步：将node对象加入到SingleLinkedList中
-        singleLinkedList.add(hero_1);
+        /*singleLinkedList.add(hero_1);
         singleLinkedList.add(hero_4);
         singleLinkedList.add(hero_2);
-        singleLinkedList.add(hero_3);
-
+        singleLinkedList.add(hero_3);*/
+        singleLinkedList.addByOrder(hero_1);
+        singleLinkedList.addByOrder(hero_4);
+        singleLinkedList.addByOrder(hero_3);
+        singleLinkedList.addByOrder(hero_3);
+        singleLinkedList.addByOrder(hero_2);
         //第四步：显示SingleLinkedList中的各个node
         singleLinkedList.show();
     }
@@ -48,6 +52,36 @@ class SingleLinkedList {
         //退出while循环之后，此时可以保证temp指向最后一个节点
         temp.next = heroNode;         //将最后一个节点指向新的节点，完成添加
     }
+
+    //添加方法升级(按编号顺序添加)
+    public void addByOrder(HeroNode heroNode) {
+        //定义一个标识记录特殊情况（编号重复不能插入）
+        boolean flag = false;
+        //定义temp辅助变量拿到head
+        HeroNode temp = head;
+        //遍历
+        while (true) {
+            if (temp.next == null) {                //说明已经到了单链表的最后一个位置
+                break;
+            }
+            if (temp.next.no > heroNode.no) {                       //此时位置正合适
+                break;
+            } else if (temp.next.no == heroNode.no) {           //编号重复，做好记录
+                flag = true;
+                break;
+            }
+            temp = temp.next;
+        }
+        //出了while循环就要对flag进行判断
+        if (flag) {              //当flag为true表明编号已存在，不可添加
+            System.out.println("该编号已存在 , 不可重复添加！");
+        } else {
+            //此时，让新节点指向原本temp的下一个节点，并让temp指向新的节点
+            heroNode.next = temp.next;
+            temp.next = heroNode;
+        }
+    }
+
 
     //显示链表中的各个节点【遍历】
     public void show() {
