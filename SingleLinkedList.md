@@ -6,7 +6,7 @@
 
 >+ 单链表结构中，将数据存放在各个节点中。如下图所示，在每个节点内部，有两部组成。（data+next）即数据和指针。所谓单链表无疑是链式存储方式，节点中的next指针指向下一个节点，存储空间不是连续的。
 >
->+ ![SingleLinkedList](./Media/SingleLinkedList_01.jpg)
+>+ <img src="./Media/SingleLinkedList_01.jpg" alt="SingleLinkedList" style="zoom:50%;" />
 >
 >+ 单链表结构中有两种形式（下文以带头结点的单链表为例）
 >
@@ -48,7 +48,7 @@
 >
 >  + <font style="color:red">顺序添加</font> （根据节点中的编号有序添加）--> <font style="color:pink">可以实现在内存中完成排序</font>
 >
->  + ![AddByOrder](./Media\SingleLinkedList_02.jpg)
+>  + <img src="./Media/SingleLinkedList_02.jpg" alt="AddByOrder" style="zoom: 50%;" />
 >
 >    ```java
 >     //添加方法升级(按编号顺序添加)
@@ -87,7 +87,7 @@
 >
 >  + 修改`temp.next =temp.next.next`;
 >
->  + ![del](./Media/SingleLinkedList_04.jpg)
+>  + <img src="./Media/SingleLinkedList_04.jpg" alt="del" style="zoom:50%;" />
 >
 >    ```java
 >    //删除节点
@@ -152,7 +152,7 @@
 >
 >  + 遍历单链表，根据编号查找对应节点，打印输出
 >
->  + ![get](./Media/SingleLinkedList_05.jpg)
+>  + <img src="./Media/SingleLinkedList_05.jpg" alt="get" style="zoom: 50%;" />
 >
 >    ```java
 >    //查询对应节点信息
