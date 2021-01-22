@@ -31,6 +31,10 @@ public class SingleLinkedListDemo {
         singleLinkedList.show();
         singleLinkedList.addByOrder(hero_3);
 //        singleLinkedList.show();
+        //------------------------------链表反转--------------------------------------
+        System.out.println("===================链表反转==================");
+        singleLinkedList.reverseList(singleLinkedList.getHead());
+        singleLinkedList.show();
         //------------------------------------------------------------------------------
         singleLinkedList.del(4);
         singleLinkedList.del(1);
@@ -52,10 +56,10 @@ public class SingleLinkedListDemo {
         //--------------------------------------面视题目测试------------------------------------
         //统计单链表中 有效节点的个数（length）
         int length = singleLinkedList.getLength(singleLinkedList.getHead());
-        System.out.println("有效结点的个数为："+length);
+        System.out.println("有效结点的个数为：" + length);
         //查找单链表中倒数第k个节点（循环遍历length-k移动指针）
         HeroNode res = singleLinkedList.getLastIndex(singleLinkedList.getHead(), 1);
-        System.out.println("res= "+res);
+        System.out.println("res= " + res);
 
     }
 
@@ -217,15 +221,15 @@ class SingleLinkedList {
 
 
     //------------------------------------面试题----------------------------------------
-    //获取有效节点的个数（带头结点的链表不统计头节点）
-    public static int getLength(HeroNode head){
+    //获取链表中有效节点的个数（带头结点的链表不统计头节点）
+    public static int getLength(HeroNode head) {
         //判断链表是否为空
-        if (head.next == null){
+        if (head.next == null) {
             return 0;
         }
         int length = 0;
         HeroNode cur = head.next;
-        while(cur != null){
+        while (cur != null) {
             length++;
             cur = cur.next;
         }
@@ -233,23 +237,43 @@ class SingleLinkedList {
     }
 
     //查找单链表中倒数第k个结点
-    public static HeroNode getLastIndex(HeroNode head,int k){
+    public static HeroNode getLastIndex(HeroNode head, int k) {
         //判断链表是否为空
-        if (head.next == null){
+        if (head.next == null) {
             return null;
         }
         //获取链表的长度
         int length = getLength(head);
         //边界判断
-        if (k <= 0 || k > length){  //相当于越界，查找不到对应的节点
-            return null ;
+        if (k <= 0 || k > length) {  //相当于越界，查找不到对应的节点
+            return null;
         }
         //定义辅助节点，开始遍历
-        HeroNode cur = head.next ;
-        for (int i = 0; i <length-k ; i++) {        //定位到倒数第k个节点
-                cur = cur.next;
+        HeroNode cur = head.next;
+        for (int i = 0; i < length - k; i++) {        //定位到倒数第k个节点
+            cur = cur.next;
         }
-        return  cur;
+        return cur;
+    }
+
+    //单链表的反转 （有点难度） --腾讯
+    public static void reverseList(HeroNode head) {
+        //判断链表是否为空，或者只有一个节点（反转无意义）
+        if (head.next == null || head.next.next == null) {
+            return;
+        }
+        //定义一个辅助变量来辅助遍历链表
+        HeroNode cur = head.next;
+        HeroNode next = null;          //指向当前节点【cur】的下一个节点
+        HeroNode reverseHead = new HeroNode(0, "", "");
+        //遍历链表时，每遍历一个节点就将其取出，并放在新的链表的最前端
+        while (cur != null) {
+            next = cur.next;  //保存后一个节点
+            cur.next = reverseHead.next; //将cur节点的下一个节点指向新链表的最前端
+            reverseHead.next = cur;
+            cur = next;  //将当前节点后移
+        }
+        head.next = reverseHead.next; //将原始链表指向新链表的头元素
     }
 }
 
