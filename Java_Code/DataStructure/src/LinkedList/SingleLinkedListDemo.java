@@ -1,4 +1,5 @@
 package LinkedList;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Joeo8
@@ -15,6 +16,8 @@ public class SingleLinkedListDemo {
         HeroNode hero_4 = new HeroNode(4, "林冲", "豹子头");
         //第二步：创建一个SingleLinkedList
         SingleLinkedList singleLinkedList = new SingleLinkedList();
+        System.out.println("===============SingleLinkedList==============");
+        singleLinkedList.show();
         //第三步：将node对象加入到SingleLinkedList中
         /*singleLinkedList.add(hero_1);
         singleLinkedList.add(hero_4);
@@ -23,12 +26,23 @@ public class SingleLinkedListDemo {
         singleLinkedList.addByOrder(hero_1);
         singleLinkedList.addByOrder(hero_4);
         singleLinkedList.addByOrder(hero_3);
-        singleLinkedList.addByOrder(hero_3);
         singleLinkedList.addByOrder(hero_2);
-        HeroNode updateHero = new HeroNode(2,"俊逸","麒麟");
-        singleLinkedList.update(updateHero);
-        //第四步：显示SingleLinkedList中的各个node
+        System.out.println("===================添加完成==================");
         singleLinkedList.show();
+        singleLinkedList.addByOrder(hero_3);
+        HeroNode updateHero = new HeroNode(2, "俊逸", "麒麟");
+        singleLinkedList.update(updateHero);
+        System.out.println("===================修改完成==================");
+        singleLinkedList.show();
+        singleLinkedList.del(4);
+        singleLinkedList.del(1);
+//        singleLinkedList.del(2);
+//        singleLinkedList.del(3);
+        System.out.println("===================删除完成==================");
+        singleLinkedList.show();
+       /* //第四步：显示SingleLinkedList中的各个node
+        singleLinkedList.show();*/
+        System.out.println("===============SingleLinkedList==============");
     }
 
 }
@@ -83,31 +97,53 @@ class SingleLinkedList {
         }
     }
 
+    //删除节点
+    public void del(int no) {
+        HeroNode temp = head;
+        boolean flag = false;
+        while (true) {
+            if (temp.next == null) {      //已经到了链表的最后
+                break;
+            }
+            if (temp.next.no == no) {    //删除时机
+                flag = !flag;
+                break;
+            }
+            temp = temp.next;
+        }
+        //出了while只有两种情况：找到该节点，或者该节点不存在
+        if (flag) {
+            temp.next = temp.next.next;
+        } else {
+            System.out.println("不存在该节点！");
+        }
+    }
+
     //修改节点信息（根据no编号进行修改，即no不可更改）
-    public void update(HeroNode heroNode){
+    public void update(HeroNode heroNode) {
         //判断链表是否为空
-        if (head.next == null){
+        if (head.next == null) {
             System.out.println("链表为空！");
-            return ;
+            return;
         }
         //根据no编号索引需要修改的节点数据
-        HeroNode temp = head.next ;
-        boolean flag = false ;
-        while(true){
-            if (temp == null){
-                break ; //表示已经遍历完链表
+        HeroNode temp = head.next;
+        boolean flag = false;
+        while (true) {
+            if (temp == null) {
+                break; //表示已经遍历完链表
             }
-            if(temp.no == heroNode.no){
-                flag = true ;
-                break ;
+            if (temp.no == heroNode.no) {
+                flag = true;
+                break;
             }
-            temp = temp.next ;
+            temp = temp.next;
         }
         //根据flag判断是否找到要修改的节点
-        if (flag){
+        if (flag) {
             temp.name = heroNode.name;
             temp.nickname = heroNode.nickname;
-        }else{
+        } else {
             //没有找到要修改的节点
             System.out.println("没要找到节点信息，无法进行修改！");
         }
@@ -118,7 +154,7 @@ class SingleLinkedList {
     public void show() {
         //判断链表是否未空
         if (head.next == null) {
-            throw new RuntimeException("链表为空！");
+            System.out.println("链表为空！");
         }
 
         //因为头节点不能懂，所以 new 一个赋值变量进行遍历
