@@ -30,18 +30,22 @@ public class SingleLinkedListDemo {
         System.out.println("===================添加完成==================");
         singleLinkedList.show();
         singleLinkedList.addByOrder(hero_3);
-        HeroNode updateHero = new HeroNode(2, "俊逸", "麒麟");
-        singleLinkedList.update(updateHero);
-        System.out.println("===================修改完成==================");
-        singleLinkedList.show();
+//        singleLinkedList.show();
+        //------------------------------------------------------------------------------
         singleLinkedList.del(4);
         singleLinkedList.del(1);
 //        singleLinkedList.del(2);
 //        singleLinkedList.del(3);
         System.out.println("===================删除完成==================");
         singleLinkedList.show();
-       /* //第四步：显示SingleLinkedList中的各个node
-        singleLinkedList.show();*/
+        //-------------------------------------------------------------------------------
+        HeroNode updateHero = new HeroNode(2, "俊逸", "麒麟");
+        singleLinkedList.update(updateHero);
+        System.out.println("===================修改完成==================");
+        singleLinkedList.show();
+        //-------------------------------------------------------------------------------
+        System.out.println("===================查询完成==================");
+        singleLinkedList.get(2);
         System.out.println("===============SingleLinkedList==============");
     }
 
@@ -150,13 +154,38 @@ class SingleLinkedList {
 
     }
 
+    //查询对应节点信息
+    public void get(int no) {
+        //判断链表是否未空
+        if (head.next == null) {
+            System.out.println("链表为空！");
+        }
+        HeroNode temp = head.next;
+        boolean flag = false;
+        while (true) {
+            if (temp == null) {
+                break;
+            }
+            if (temp.no == no) {
+                flag = !flag;
+//                System.out.println(temp);
+                break;
+            }
+            temp = temp.next;
+        }
+        if (flag) {
+            System.out.println(temp);
+        } else {
+            System.out.println("不存在该节点！");
+        }
+    }
+
     //显示链表中的各个节点【遍历】
     public void show() {
         //判断链表是否未空
         if (head.next == null) {
             System.out.println("链表为空！");
         }
-
         //因为头节点不能懂，所以 new 一个赋值变量进行遍历
         HeroNode temp = head.next;
         while (true) {
