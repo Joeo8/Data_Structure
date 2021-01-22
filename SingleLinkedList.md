@@ -48,7 +48,7 @@
 >
 >  + <font style="color:red">顺序添加</font> （根据节点中的编号有序添加）--> <font style="color:pink">可以实现在内存中完成排序</font>
 >
->  + ![AddByOrder](./Media\SingleLinkedList_02.jpg)
+>  + ![AddByOrder](./Media/SingleLinkedList_02.jpg)
 >
 >    ```java
 >     //添加方法升级(按编号顺序添加)
