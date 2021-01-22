@@ -20,7 +20,9 @@
 
 
 <hr>
+
 #### Operation
+
 
 >+ ##### 添加节点：
 >
@@ -46,7 +48,7 @@
 >
 >  + <font style="color:red">顺序添加</font> （根据节点中的编号有序添加）--> <font style="color:pink">可以实现在内存中完成排序</font>
 >
->  + ![AddByOrder](C:\Users\Joeo8\Desktop\Data_Structure\Data_Structure\Media\SingleLinkedList_02.jpg)
+>  + ![AddByOrder](./Media\SingleLinkedList_02.jpg)
 >
 >    ```java
 >     //添加方法升级(按编号顺序添加)
@@ -85,7 +87,7 @@
 >
 >  + 修改`temp.next =temp.next.next`;
 >
->  + ![del](C:\Users\Joeo8\Desktop\Data_Structure\Data_Structure\Media\SingleLinkedList_04.jpg)
+>  + ![del](./Media/SingleLinkedList_04.jpg)
 >
 >    ```java
 >    //删除节点
@@ -150,7 +152,7 @@
 >
 >  + 遍历单链表，根据编号查找对应节点，打印输出
 >
->  + ![get](C:\Users\Joeo8\Desktop\Data_Structure\Data_Structure\Media\SingleLinkedList_05.jpg)
+>  + ![get](./Media/SingleLinkedList_05.jpg)
 >
 >    ```java
 >    //查询对应节点信息
