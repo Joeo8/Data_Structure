@@ -47,6 +47,16 @@ public class SingleLinkedListDemo {
         System.out.println("===================查询完成==================");
         singleLinkedList.get(2);
         System.out.println("===============SingleLinkedList==============");
+
+
+        //--------------------------------------面视题目测试------------------------------------
+        //统计单链表中 有效节点的个数（length）
+        int length = singleLinkedList.getLength(singleLinkedList.getHead());
+        System.out.println("有效结点的个数为："+length);
+        //查找单链表中倒数第k个节点（循环遍历length-k移动指针）
+        HeroNode res = singleLinkedList.getLastIndex(singleLinkedList.getHead(), 1);
+        System.out.println("res= "+res);
+
     }
 
 }
@@ -55,6 +65,10 @@ public class SingleLinkedListDemo {
 class SingleLinkedList {
     //首先：初始化一个头节点，保证头节点不动（只是标记作用，不存放具体数据）
     private HeroNode head = new HeroNode(0, "", "");
+
+    public HeroNode getHead() {
+        return head;
+    }
 
     //添加节点到链表中  (当不考虑编号时，找到最后一个节点，然后将next指向新增的节点)
     public void add(HeroNode heroNode) {
@@ -199,6 +213,43 @@ class SingleLinkedList {
             temp = temp.next;
         }
 
+    }
+
+
+    //------------------------------------面试题----------------------------------------
+    //获取有效节点的个数（带头结点的链表不统计头节点）
+    public static int getLength(HeroNode head){
+        //判断链表是否为空
+        if (head.next == null){
+            return 0;
+        }
+        int length = 0;
+        HeroNode cur = head.next;
+        while(cur != null){
+            length++;
+            cur = cur.next;
+        }
+        return length;
+    }
+
+    //查找单链表中倒数第k个结点
+    public static HeroNode getLastIndex(HeroNode head,int k){
+        //判断链表是否为空
+        if (head.next == null){
+            return null;
+        }
+        //获取链表的长度
+        int length = getLength(head);
+        //边界判断
+        if (k <= 0 || k > length){  //相当于越界，查找不到对应的节点
+            return null ;
+        }
+        //定义辅助节点，开始遍历
+        HeroNode cur = head.next ;
+        for (int i = 0; i <length-k ; i++) {        //定位到倒数第k个节点
+                cur = cur.next;
+        }
+        return  cur;
     }
 }
 
