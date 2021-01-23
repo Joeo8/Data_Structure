@@ -1,5 +1,7 @@
 package LinkedList;
 
+import java.util.Stack;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Joeo8
@@ -35,6 +37,9 @@ public class SingleLinkedListDemo {
         System.out.println("===================链表反转==================");
         singleLinkedList.reverseList(singleLinkedList.getHead());
         singleLinkedList.show();
+        //-------------------------------逆序打印-------------------------------------
+        System.out.println("===================逆序打印==================");
+        singleLinkedList.reversePrint(singleLinkedList.getHead());
         //------------------------------------------------------------------------------
         singleLinkedList.del(4);
         singleLinkedList.del(1);
@@ -60,7 +65,6 @@ public class SingleLinkedListDemo {
         //查找单链表中倒数第k个节点（循环遍历length-k移动指针）
         HeroNode res = singleLinkedList.getLastIndex(singleLinkedList.getHead(), 1);
         System.out.println("res= " + res);
-
     }
 
 }
@@ -274,6 +278,25 @@ class SingleLinkedList {
             cur = next;  //将当前节点后移
         }
         head.next = reverseHead.next; //将原始链表指向新链表的头元素
+    }
+
+    //将链表逆序打印输出[栈]
+    public static  void reversePrint(HeroNode head){
+        //判断链表是否为空
+        if (head.next == null){
+            return ;  //空链表，打印无意义
+        }
+        //创建一个栈，依次将链表中的元素压入栈中，然后从栈顶pop
+        Stack<HeroNode> stack = new Stack<>();
+        HeroNode cur = head.next;
+        while(cur != null){
+            stack.push(cur);
+            cur = cur.next;  //cur节点后移
+        }
+        //将栈中数据打印输出
+        while(stack.size()>0){
+            System.out.println(stack.pop());
+        }
     }
 }
 
