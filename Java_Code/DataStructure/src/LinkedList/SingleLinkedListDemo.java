@@ -1,5 +1,4 @@
 package LinkedList;
-
 import java.util.Stack;
 
 /**
