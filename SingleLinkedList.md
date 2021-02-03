@@ -217,3 +217,14 @@ Process finished with exit code 0
 
 ```
 
+<hr>
+
+>#### SingleLinkedList‘s Disadvantage
+>
+>+ 单向链表，查找的方向只能是一个方向；而双向链表可以向前或者向后查找
+>+ 单向链表不能自我删除，需要靠辅助节点（修改前一个节点的next值）；而双项链表则可以实现自我删除。
+
+
+
+[DoubleLinkedList](DoubleLinkedList.md)
+
