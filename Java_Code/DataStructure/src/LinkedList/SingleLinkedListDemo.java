@@ -16,7 +16,7 @@ public class SingleLinkedListDemo {
         HeroNode hero_3 = new HeroNode(3, "吴用", "智多星");
         HeroNode hero_4 = new HeroNode(4, "林冲", "豹子头");
         //第二步：创建一个SingleLinkedList
-        DoublleLinkedList singleLinkedList = new DoublleLinkedList();
+        SingleLinkedList singleLinkedList = new SingleLinkedList();
         System.out.println("===============SingleLinkedList==============");
         singleLinkedList.show();
         //第三步：将node对象加入到SingleLinkedList中
@@ -69,7 +69,7 @@ public class SingleLinkedListDemo {
 }
 
 //创建单链表SingleLinkedList来管理node对象
-class DoublleLinkedList {
+class SingleLinkedList {
     //首先：初始化一个头节点，保证头节点不动（只是标记作用，不存放具体数据）
     private HeroNode head = new HeroNode(0, "", "");
 
