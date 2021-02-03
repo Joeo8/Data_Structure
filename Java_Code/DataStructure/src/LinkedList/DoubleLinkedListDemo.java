@@ -18,10 +18,10 @@ public class DoubleLinkedListDemo {
         DoubleLinkedList doubleLinkedList = new DoubleLinkedList();
         System.out.println("===============DoubleLinkedList==============");
         //向链表中添加数据
-        doubleLinkedList.add(hero_1);
-        doubleLinkedList.add(hero_2);
-        doubleLinkedList.add(hero_3);
-        doubleLinkedList.add(hero_4);
+        doubleLinkedList.addAA(hero_1);
+        doubleLinkedList.addAA(hero_3);
+        doubleLinkedList.addAA(hero_2);
+        doubleLinkedList.addAA(hero_4);
         System.out.println("===================添加完成==================");
         doubleLinkedList.list();
         //删除链表中的节点数据
@@ -88,6 +88,38 @@ class DoubleLinkedList {
         temp.next = heroNode;
         heroNode.pre = temp;
     }
+
+    //添加方法升级(按编号顺序添加)
+    public void addAA(HeroNode1 heroNode) {
+        //定义一个标识记录特殊情况（编号重复不能插入）
+        boolean flag = false;
+        //定义temp辅助变量拿到head
+        HeroNode1 temp = head;
+        //遍历
+        while (true) {
+            if (temp.next == null) {                //说明已经到了单链表的最后一个位置
+                break;
+            }
+            if (temp.next.no > heroNode.no) {                       //此时位置正合适
+                break;
+            } else if (temp.next.no == heroNode.no) {           //编号重复，做好记录
+                flag = true;
+                break;
+            }
+            temp = temp.next;
+        }
+        //出了while循环就要对flag进行判断
+        if (flag) {              //当flag为true表明编号已存在，不可添加
+            System.out.println("该编号已存在 , 不可重复添加！");
+        } else {
+            //先指向temp的下一个，保证链表不会断的情况下，完成pre的对接
+            heroNode.next = temp.next;
+            heroNode.pre = temp;
+            temp.next = heroNode;
+            temp.next.pre = heroNode;
+        }
+    }
+
 
     //修改节点的内容   (和单链表操作相同)
     public void update(HeroNode1 heroNode) {
