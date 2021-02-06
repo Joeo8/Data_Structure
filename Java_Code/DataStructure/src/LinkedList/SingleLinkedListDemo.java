@@ -73,6 +73,7 @@ class SingleLinkedList {
     //首先：初始化一个头节点，保证头节点不动（只是标记作用，不存放具体数据）
     private HeroNode head = new HeroNode(0, "", "");
 
+    //获取头节点
     public HeroNode getHead() {
         return head;
     }
