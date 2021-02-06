@@ -6,7 +6,7 @@ import java.util.Stack;
  * Created with IntelliJ IDEA.
  * User: Joeo8
  * Time: 20:28
- * Description: No Description
+ * Description: Stack
  */
 public class StackTest {
     //显示栈Stack的基本使用
@@ -22,5 +22,4 @@ public class StackTest {
             System.out.println(stack.pop());
         }
     }
-
 }
