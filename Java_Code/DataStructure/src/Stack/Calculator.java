@@ -8,7 +8,7 @@ package Stack;
  */
 public class Calculator {
     public static void main(String[] args) {
-        String expression = "3+2*6-2";      //中缀表达式
+        String expression = "30+2*6-2";      //中缀表达式
         //创建两个栈（一个数栈、一个运算符栈）
         ArrayStack1 numStack = new ArrayStack1(10);
         ArrayStack1 operStack = new ArrayStack1(10);
@@ -48,7 +48,22 @@ public class Calculator {
                     operStack.push(ch);
                 }
             } else { //如果是数,则将字符1转换成数字1（ch-48）
-                numStack.push(ch - 48);
+                //bug：处理多位数(判断表达式中的下一位是否为数字,如果是则拼接)
+                //处理多位数
+                keepNum += ch;
+                //如果ch已经是expression的最后一位,就直接入栈
+                if (index == expression.length() - 1) {
+                    numStack.push(Integer.parseInt(keepNum));
+                } else {
+                    //判断下一个字符是不是数字,是则继续向后扫描,不是则入数栈
+                    //这是只是向后看一下,index本身不变==》所以不能用index++
+                    if (operStack.isOper(expression.substring(index + 1, index + 2).charAt(0))) {
+                        //如果后一位是运算符
+                        numStack.push(Integer.parseInt(keepNum));
+                        //此时注意将keepNum字符清空
+                        keepNum = "";
+                    }
+                }
             }
             //让index自增,扫描表达式
             index++;
