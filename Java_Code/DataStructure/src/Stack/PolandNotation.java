@@ -17,7 +17,7 @@ public class PolandNotation {
         /*
          *思路:
          *   1）将String类型的中缀表达式转换成对应的List
-         *   2）将得到的中缀表达式List转换成后悔表达式List
+         *   2）将得到的中缀表达式List转换成后缀表达式List
          */
         String expression = "1+((2+3)*4)-5";
         List<String> list = toInfixExpressionList(expression);  //中缀表达式
@@ -162,7 +162,7 @@ class Operation {
     private static int MUL = 1;
     private static int DIV = 1;
 
-    //写一个方法,通过运算符拿到优先级数字
+    //写一个方法,通过运算符获取优先级对应数字
     public static int getValue(String oper) {
         int result = 0;
         switch (oper) {
