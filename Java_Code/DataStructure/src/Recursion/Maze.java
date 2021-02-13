@@ -50,14 +50,14 @@ public class Maze {
      *   如果能到达map[6][5],则说明通路已经找到
      *   约定:map[i][j]的状态值为0表示没有走过;为1表示墙体;为2表示通路可以走;为3表示死路
      *   最后设置策略 下 --> 右 --> 上 --> 左
-     *
      * */
+
     public static boolean setWay(int[][] map, int i, int j) {
         if (map[6][5] == 2) {  //通路已经找到,Game Over
             return true;
         } else {
-            if (map[i][j] == 0) {  //如果这个点还没有走
-                map[i][j] = 2;  //设想可以走通
+            if (map[i][j] == 0) {                         //如果这个点还没有走
+                map[i][j] = 2;                            //设想可以走通,预设为2
                 if (setWay(map, i + 1, j)) {            //向下走
                     return true;
                 } else if (setWay(map, i, j + 1)) {     //向右走
@@ -67,7 +67,7 @@ public class Maze {
                 } else if (setWay(map, i, j - 1)) {     //向左走
                     return true;
                 }else{
-                    //说明该点走不通是死路
+                                                          //说明该点走不通是死路
                     map[i][j] =3 ;
                     return false;
                 }
