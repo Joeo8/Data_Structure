@@ -9,9 +9,9 @@ package Recursion;
 public class RecursionTest {
     public static void main(String[] args) {
         //通过打印问题,回顾递归调用机制
-//        test(4);
+        //test(4);                           //2,3,4
         int res = factorial(4);
-        System.out.println("结果为: " + res);
+        System.out.println("结果为: " + res); //24  <== (1*2*3*4)
     }
 
 
