@@ -24,6 +24,7 @@ public class Maze {
         //设置相应挡板
         map[3][1] = 1;
         map[3][2] = 1;
+        map[4][3] = 1;
         //输出地图
         System.out.println("====================Map=====================");
         for (int i = 0; i < map.length; i++) {
@@ -32,15 +33,15 @@ public class Maze {
             }
             System.out.println();
         }
-        setWay(map,1,1);
+        setWay(map, 1, 1);
         System.out.println("====================Over=====================");
-         for (int i = 0; i < map.length; i++) {
+        for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
                 System.out.print(map[i][j] + " ");
             }
             System.out.println();
         }
-
+        System.out.println("====================Map=====================");
     }
 
     //使用递归回溯走出迷宫
@@ -66,12 +67,12 @@ public class Maze {
                     return true;
                 } else if (setWay(map, i, j - 1)) {     //向左走
                     return true;
-                }else{
-                                                          //说明该点走不通是死路
-                    map[i][j] =3 ;
+                } else {
+                    //说明该点走不通是死路
+                    map[i][j] = 3;
                     return false;
                 }
-            }else{  //如果这个点已经走过
+            } else {  //如果这个点已经走过
                 return false;
             }
         }
