@@ -3,7 +3,7 @@ package Sorting;
 ///希尔排序(缩小增量排序)
 //将原始数组细分为多个组,在各个组中插入排序,并一次合并大小组,直至剩下一个组(即整个原始数组)
 //交换式80000数据测试耗时10s
-//移位式80000数据测试耗时1s
+//移位式80000数据测试耗时120ms
 
 import java.util.Arrays;
 
@@ -24,7 +24,7 @@ public class ShellSort {
 //        shellSort(arrs);
         shellSort2(arrs);
         long end = System.currentTimeMillis();
-        System.out.println("SelectSorting共耗时:" + (end - start) + "ms");
+        System.out.println("ShellSorting共耗时:" + (end - start) + "ms");
     }
 
     public static void shellSort(int[] arr) {
